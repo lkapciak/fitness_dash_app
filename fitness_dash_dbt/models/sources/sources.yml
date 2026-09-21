@@ -1,0 +1,38 @@
+version: 2
+
+sources:
+  - name: health_connect
+    schema: bronze
+
+    tables:
+      - name: active_calories_burned_record_table
+      - name: activity_date_table
+      - name: weight_record_table
+      - name: total_calories_burned_record_table
+      - name: steps_record_table
+      - name: StepsCadenceRecordTable
+      - name: steps_cadence_record_table
+      - name: SpeedRecordTable
+      - name: speed_record_table
+      - name: sleep_stages_table
+      - name: sleep_session_record_table
+      - name: resting_heart_rate_record_table
+      - name: read_access_logs_table
+      - name: preference_table
+      - name: heart_rate_record_series_table
+      - name: oxygen_saturation_record_table
+      - name: height_record_table
+      - name: nutrition_record_table
+      - name: heart_rate_record_table
+      - name: health_data_category_priority_table
+      - name: exercise_session_record_table
+      - name: exercise_segments_table
+      - name: exercise_route_table
+      - name: distance_record_table
+      - name: device_info_table
+      - name: device_data_sources_table
+      - name: body_fat_record_table
+      - name: basal_metabolic_rate_record_table
+      - name: application_info_table
+
+
