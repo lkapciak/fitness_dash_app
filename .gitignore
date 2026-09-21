@@ -1,3 +1,4 @@
 noncommitable/
 logs/
 .venv/
+.env
