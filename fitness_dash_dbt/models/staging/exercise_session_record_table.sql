@@ -1,3 +1,11 @@
+{{ 
+	config(
+		materialized="incremental", 
+		incremental_strategy="delete+insert",
+		unique_key="row_id"
+		)
+}}
+
 select
     row_id,
 	hex(uuid) as uuid,
@@ -17,4 +25,8 @@ select
     has_route,
     planned_exercise_session_id,
     session_rate_of_perceived_exertion
-from {{ source('health_connect', 'exercise_session_record_table') }};
+from {{ source('health_connect', 'exercise_session_record_table') }}
+{% if is_incremental() %}
+where {{ cast_unixepoch_to_local_datetime(last_modified_time) }}
+    > (select max(last_modified_time) from {{ this }})
+{% endif %};

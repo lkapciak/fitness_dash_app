@@ -1,5 +1,12 @@
+{{ 
+	config(
+		materialized="incremental", 
+		incremental_strategy="delete+insert",
+		unique_key="row_id"
+		)
+}}
 
-SELECT 
+select 
 	row_id,
 	hex(uuid) as uuid,
 	{{cast_unixepoch_to_local_datetime(last_modified_time)}} as last_modified_time,
@@ -12,4 +19,8 @@ SELECT
 	{{cast_unixepoch_to_date(local_date)}} as local_date,
 	{{cast_unixepoch_to_datetime(local_date_time)}} as local_date_time,
     percentage
-from {{ source('health_connect', 'body_fat_record_table') }};
+from {{ source('health_connect', 'body_fat_record_table') }}
+{% if is_incremental() %}
+where {{ cast_unixepoch_to_local_datetime(last_modified_time) }}
+    > (select max(last_modified_time) from {{ this }})
+{% endif %};

@@ -1,4 +1,12 @@
-SELECT 
+{{ 
+	config(
+		materialized="incremental", 
+		incremental_strategy="delete+insert",
+		unique_key="row_id"
+		)
+}}
+
+select 
 	row_id,
 	hex(uuid) as uuid,
 	{{cast_unixepoch_to_local_datetime(last_modified_time)}} as last_modified_time,
@@ -13,4 +21,8 @@ SELECT
 	{{cast_unixepoch_to_datetime(local_date_time_end_time)}} as local_date_time_end_time,
     title,
     notes
-from {{ source('health_connect', 'sleep_session_record_table') }};
+from {{ source('health_connect', 'sleep_session_record_table') }}
+{% if is_incremental() %}
+where {{ cast_unixepoch_to_local_datetime(last_modified_time) }}
+    > (select max(last_modified_time) from {{ this }})
+{% endif %};
