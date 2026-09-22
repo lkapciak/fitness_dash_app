@@ -9,7 +9,7 @@
 select
     parent_key,
     timestamp_millis,
-    {{cast_unixepoch_to_local_datetime(timestamp_millis)}} as date_time,
+    {{cast_unixepoch_to_local_datetime('timestamp_millis')}} as date_time,
     longitude,
     latitude,
     altitude
@@ -23,4 +23,4 @@ where not exists (
       and existing.timestamp_millis = src.timestamp_millis
 )
 
-{% endif %};
+{% endif %}

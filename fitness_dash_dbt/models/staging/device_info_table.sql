@@ -10,4 +10,4 @@ select
 from {{ source('health_connect', 'device_info_table') }}
 {% if is_incremental() %}
 where row_id > (select max(row_id) from {{ this }})
-{% endif %};
+{% endif %}

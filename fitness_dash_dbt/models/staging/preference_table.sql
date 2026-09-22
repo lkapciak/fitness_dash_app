@@ -14,4 +14,4 @@ select
     key,
     value
 from ranked
-where rn = 1;
+where rn = 1
