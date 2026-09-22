@@ -1,3 +1,3 @@
 {% macro cast_unixepoch_to_datetime(unixepoch) %}
-    strftime('%Y-%m-%d %H:%M:%S', datetime({{ unixepoch }}/1000, 'unixepoch'))
+    to_timestamp({{ unixepoch }} / 1000.0)
 {% endmacro %}
