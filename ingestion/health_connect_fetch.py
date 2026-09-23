@@ -18,11 +18,11 @@ ENV_FILE = PROJECT_ROOT / "infrastructure" / ".env"
 load_dotenv(ENV_FILE)
 
 SCOPES = ["https://www.googleapis.com/auth/drive.readonly"]
-CREDENTIALS_FILE = "../infrastructure/google_drive_credentials.json"
-TOKEN_FILE = "../infrastructure/google_drive_token.json"
+CREDENTIALS_FILE = PROJECT_ROOT / "infrastructure" / "google_drive_credentials.json"
+TOKEN_FILE = PROJECT_ROOT / "infrastructure" / "google_drive_token.json"
 
 FILE_ID = os.getenv("GOOGLE_DRIVE_EXPORT_FILE_ID")
-OUTPUT_DIR = Path("../data/health_connect")
+OUTPUT_DIR = PROJECT_ROOT / "data" / "health_connect"
 
 
 def get_credentials() -> Credentials:
