@@ -5,11 +5,11 @@
     )
 }}
 
-select
+select distinct
     parent_key,
     rate,
     epoch_millis,
-    {{cast_unixepoch_to_datetime('epoch_millis')}} as date_time
+    {{cast_unixepoch_to_local_datetime('epoch_millis')}} as date_time
 from {{ source('health_connect', 'steps_cadence_record_table') }} src
 
 {% if is_incremental() %}
