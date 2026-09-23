@@ -23,7 +23,7 @@ models:
       +materialized: incremental
       +tags: ["silver"]
 
-    gold:
+    marts:
       +schema: gold
       +materialized: table
       +tags: ["gold"]
