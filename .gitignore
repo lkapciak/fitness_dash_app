@@ -1,4 +1,12 @@
+# Temporary files
 noncommitable/
-logs/
+
+# Python virtual environment, logs and database files
 .venv/
+*.db
+logs/
+
+# Secrets
 .env
+infrastructure/google_drive_credentials.json
+infrastructure/google_drive_token.json
