@@ -38,5 +38,26 @@ services:
 
     command: ["dbt", "--version"]
 
+  metabase:
+    image: metabase/metabase:latest
+    container_name: fitness-metabase
+    restart: unless-stopped
+
+    environment:
+      MB_DB_TYPE: postgres
+      MB_DB_DBNAME: metabase
+      MB_DB_PORT: 5432
+      MB_DB_USER: ${POSTGRES_METABASE_USER}
+      MB_DB_PASS: ${POSTGRES_METABASE_PASSWORD}
+      MB_DB_HOST: postgres
+
+      JAVA_TIMEZONE: Europe/Warsaw
+
+    ports:
+      - "${METABASE_PORT}:3000"
+
+    depends_on:
+      - postgres
+
 volumes:
   postgres_data:
