@@ -17,4 +17,4 @@ select
 from total_calories_burned tcb
 left join active_calories_burned acb
     using(local_date)
-order by local_date;
+order by local_date
