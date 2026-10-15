@@ -63,7 +63,7 @@ services:
     build:
       context: ..
       dockerfile: dashboard/Dockerfile
-    container_name: fitness_dashboard
+    container_name: fitness-dashboard
     ports:
       - "${DASHBOARD_PORT}:7259"
     environment:
