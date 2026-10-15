@@ -12,7 +12,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 ENV_FILE = PROJECT_ROOT / "infrastructure" / ".env"
 load_dotenv(ENV_FILE)
 
-POSTGRES_HOST = os.getenv("POSTGRES_HOST")
+POSTGRES_HOST = 'postgres'
 POSTGRES_PORT = os.getenv("POSTGRES_PORT")
 POSTGRES_DB = os.getenv("POSTGRES_DB")
 POSTGRES_USER = os.getenv("POSTGRES_USER")
