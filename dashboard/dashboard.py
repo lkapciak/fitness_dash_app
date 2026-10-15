@@ -4,7 +4,7 @@ from utils import connect_to_database, fetch_query_results
 from dash import Dash, html, dcc, Input, Output, callback
 
 from dotenv import load_dotenv
-import Path
+from pathlib import Path
 import os
 
 
