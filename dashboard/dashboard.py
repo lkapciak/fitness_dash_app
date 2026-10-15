@@ -1,5 +1,5 @@
-from dashboard.plots import kpi_card
-from dashboard.utils import connect_to_database, fetch_query_results
+from plots import kpi_card
+from utils import connect_to_database, fetch_query_results
 
 from dash import Dash, html, dcc, Input, Output, callback
 
